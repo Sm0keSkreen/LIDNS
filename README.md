@@ -82,7 +82,7 @@ Both times it's to reload the DNS inside the extension. First one kicks it in af
 LIDNS is better than Omada DNS for Lightspeed on two levels. First, it immediately unblocks sites on the Wi-Fi you set LIDNS up on. Second, it caches sites you want unblocked so they work on other school Wi-Fis where Omada DNS can't be used at all.
 
 **Is this open source?**
-Yes. You can check out the code at [github.com/Dylanthedabber/LIDNS](https://github.com/Dylanthedabber/LIDNS) and host it yourself if you run into lag on the VPS or just don't trust it.
+Yes. You can check out the code at [github.com/Sm0keSkreen/LIDNS](https://github.com/Sm0keSkreen/LIDNS) and host it yourself if you run into lag on the VPS or just don't trust it.
 
 **Why do I need the certificate and DNS change?**
 They work together. Changing the DNS points your Chromebook to the VPS, and importing the cert makes Chrome trust it. From there the Lightspeed extension is talking to the VPS instead of the real Lightspeed servers, so it can be told to allow everything.

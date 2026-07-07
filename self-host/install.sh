@@ -28,7 +28,7 @@ if [ -d "/root/lidns/.git" ]; then
     git -C /root/lidns pull
 else
     echo "Cloning LIDNS..."
-    git clone https://github.com/Dylanthedabber/LIDNS.git /root/lidns
+    git clone https://github.com/Sm0keSkreen/LIDNS.git /root/lidns
 fi
 
 chmod +x /root/lidns/self-host/setup.sh

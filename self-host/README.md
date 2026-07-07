@@ -81,7 +81,7 @@ If SSH fails, use the VNC console in your RackNerd dashboard:
 Run this one command on your VPS:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Dylanthedabber/LIDNS/main/self-host/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Sm0keSkreen/LIDNS/main/self-host/install.sh | bash
 ```
 
 This will:
