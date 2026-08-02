@@ -105,6 +105,7 @@ EOF
 # Generate CoreDNS Corefile
 cat > /etc/coredns/Corefile << EOF
 . {
+    cache 300
     hosts /etc/coredns/lshosts {
         fallthrough
     }
@@ -133,8 +134,7 @@ cat > /etc/coredns/Corefile << EOF
         answer "{{ .Name }} 60 IN A $PUBLIC_IP"
         fallthrough
     }
-    forward . 1.1.1.1 8.8.8.8
-    log
+    forward . 1.1.1.1 8.8.8.8 9.9.9.9
     errors
 }
 EOF
