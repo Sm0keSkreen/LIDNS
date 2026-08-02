@@ -191,5 +191,8 @@ check_tcp 443 "HTTPS (filter bypass)"
 check_dns
 echo ""
 
-# nginx runs in foreground to keep container alive
-exec nginx -g 'daemon off;'
+# Start nginx
+nginx -g 'daemon off;' &
+
+# Keep container alive
+tail -f /dev/null
