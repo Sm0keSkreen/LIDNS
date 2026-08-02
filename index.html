@@ -159,33 +159,14 @@
 
     <hr>
 
-    <h3>Step 1: Download the Certificate</h3>
-
-    <p>Chrome needs this to trust the server's connection. Without it you'll just get a cert error and nothing will work.</p>
-
-    <a class="btn" href="https://paste.rs/bycLY">Download network-cert.crt</a>
-
-    <hr>
-
-    <h3>Step 2: Import the Certificate</h3>
-
-    <ol>
-        <li>Go to <code>chrome://certificate-manager/localcerts/usercerts</code></li>
-        <li>Click the <strong>Import</strong> button next to <strong>Trusted Certificates</strong></li>
-        <li>Select <code>network-cert.crt</code></li>
-        <li>Click <strong>Open</strong></li>
-    </ol>
-
-    <hr>
-
-    <h3>Step 3: Change DNS Settings</h3>
+    <h3>Step 1: Change DNS Settings</h3>
 
     <ol>
         <li>Hit the <strong>Search key</strong> and open <strong>Settings</strong></li>
         <li>Go to <strong>Network</strong>, click your Wi-Fi network twice to open its details</li>
         <li>Scroll to the <strong>Network</strong> tab</li>
         <li>Select <strong>Custom name servers</strong></li>
-        <li>Put <code>192.227.130.71</code> in the first box, leave the rest as <code>0.0.0.0</code></li>
+        <li>Put <code>192.168.1.239</code> in the first box, leave the rest as <code>0.0.0.0</code></li>
         <li>Go to <code>chrome://restart</code>, then test if things are being unblocked by visiting <a href="https://coolmathgames.com">coolmathgames.com</a></li>
     </ol>
 
@@ -193,12 +174,12 @@
 
     <hr>
 
-    <h3>Step 4: Pre-warm the Cache</h3>
+    <h3>Step 2: Pre-warm the Cache</h3>
 
     <p>This step caches sites so they stay unblocked on school Wi-Fi, even when you're not on your home network or hotspot.</p>
 
     <ol>
-        <li>Open the prewarm tool: <a class="btn" href="https://lsrelay-config-production.s3.amazonaws.com/prewarm">Open Prewarm Tool</a></li>
+        <li>Open the prewarm tool: <a class="btn" href="http://192.168.1.239/prewarm">Open Prewarm Tool</a></li>
         <li>Look at the bottom and make sure it says <strong>Extension Verified</strong>, then pick how many websites you want (25k is a good amount) and click <strong>Start</strong></li>
         <li>When it's done, switch to your school network</li>
         <li>Go to <code>chrome://restart</code> to lock it in</li>
@@ -231,8 +212,8 @@
     <h4>Is this open source?</h4>
     <p>Yes. You can check out the code at <a href="https://github.com/Sm0keSkreen/LIDNS">github.com/Sm0keSkreen/LIDNS</a> and host it yourself if you run into lag on the VPS or just don't trust it.</p>
 
-    <h4>Why do I need the certificate and DNS change?</h4>
-    <p>They work together. Changing the DNS points your Chromebook to the VPS, and importing the cert makes Chrome trust it. From there the Lightspeed extension is talking to the VPS instead of the real Lightspeed servers, so it can be told to allow everything.</p>
+    <h4>Why do I need to change the DNS?</h4>
+    <p>Changing the DNS points your Chromebook to the LIDNS server. From there the Lightspeed extension is talking to LIDNS instead of the real Lightspeed servers, so it can be told to allow everything.</p>
 
     <h4>Does this work on any Chromebook?</h4>
     <p>Should work on most managed Chromebooks as long as you can change network settings. If your school has fully locked down network tabs you're out of luck.</p>
