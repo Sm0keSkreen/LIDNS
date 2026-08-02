@@ -30,7 +30,7 @@ if [ "$PORTS_OPENED" = false ]; then
 fi
 
 # Get public IP
-PUBLIC_IP=$(curl -s --max-time 10 https://api.ipify.org || curl -s --max-time 10 https://ifconfig.me)
+PUBLIC_IP=$(curl -s --max-time 10 https://api.ipify.org || curl -s --max-time 10 https://ifconfig.me || true)
 echo "Public IP: $PUBLIC_IP"
 
 # Generate new CA for this host if not already present
@@ -178,7 +178,7 @@ check_tcp() {
 
 check_dns() {
     local result
-    result=$(dig @"$PUBLIC_IP" -p 53 production-gc.lsfilter.com A +short +time=4 2>/dev/null)
+    result=$(dig @"$PUBLIC_IP" -p 53 production-gc.lsfilter.com A +short +time=4 2>/dev/null || true)
     if [ -n "$result" ]; then
         echo "  [OK]   DNS (port 53/udp) is reachable from outside. Resolved to $result"
     else
