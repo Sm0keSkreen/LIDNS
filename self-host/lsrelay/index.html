@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>LIDNS</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background: #0a0d14;
+            color: #cfd8dc;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding: 40px 20px;
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 14px;
+            line-height: 1.7
+        }
+
+        h1 {
+            color: #81d4fa;
+            font-size: 26px;
+            margin-bottom: 6px;
+            letter-spacing: .3px
+        }
+
+        h3 {
+            color: #90caf9;
+            font-size: 16px;
+            margin: 28px 0 10px
+        }
+
+        p {
+            color: #b0bec5;
+            margin-bottom: 10px
+        }
+
+        ol, ul {
+            padding-left: 22px;
+            margin: 8px 0 10px
+        }
+
+        li {
+            color: #b0bec5;
+            margin-bottom: 5px
+        }
+
+        code {
+            background: #0d1929;
+            color: #4fc3f7;
+            padding: 2px 7px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-family: monospace
+        }
+
+        a {
+            color: #4fc3f7;
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1565c0;
+            color: #e3f2fd;
+            padding: 10px 22px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+            margin-top: 10px;
+            transition: background .15s
+        }
+
+        .btn:hover {
+            background: #1976d2;
+            text-decoration: none
+        }
+
+        .note {
+            background: #0d1929;
+            border-left: 3px solid #1565c0;
+            padding: 10px 14px;
+            border-radius: 0 4px 4px 0;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #546e7a
+        }
+
+        .warn {
+            background: #1a0d00;
+            border-left: 3px solid #e65100;
+            padding: 10px 14px;
+            border-radius: 0 4px 4px 0;
+            margin: 16px 0;
+            font-size: 12px;
+            color: #bf360c
+        }
+
+        .warn strong {
+            color: #ff6d00
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #1a2744;
+            margin: 28px 0
+        }
+
+        .subtitle {
+            color: #37474f;
+            font-size: 12px;
+            margin-bottom: 16px
+        }
+
+        .credits {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #1a2744;
+            font-size: 11px;
+            color: #37474f;
+            text-align: center;
+            line-height: 1.8
+        }
+
+        .credits span {
+            color: #546e7a
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>LIDNS</h1>
+    <p class="subtitle">One-time setup. Takes about 2 minutes. Duration varies.</p>
+
+    <div class="warn">
+        <strong>Important:</strong> Do all of this on your <strong>home network or hotspot.</strong>
+        Most school Wi-Fi hardcodes the DNS so it won't work there.
+    </div>
+
+    <h3>What is this?</h3>
+
+    <p>LIDNS tricks the Lightspeed filter extension on your Chromebook into unblocking every site you visit. It also caches the sites you visit so they stay unblocked even off the DNS, meaning it works on Wi-Fis where you can't change the DNS. And somehow (honestly not totally sure why) it also unblocks network-level blocking for sites too.</p>
+
+    <hr>
+
+    <h3>What you'll need</h3>
+
+    <p>A Chromebook, and a home Wi-Fi or hotspot to set LIDNS up on. It needs to be a network where you can change the DNS settings.</p>
+
+    <hr>
+
+    <h3>Step 1: Change DNS Settings</h3>
+
+    <ol>
+        <li>Hit the <strong>Search key</strong> and open <strong>Settings</strong></li>
+        <li>Go to <strong>Network</strong>, click your Wi-Fi network twice to open its details</li>
+        <li>Scroll to the <strong>Network</strong> tab</li>
+        <li>Select <strong>Custom name servers</strong></li>
+        <li>Put <code>192.168.1.239</code> in the first box, leave the rest as <code>0.0.0.0</code></li>
+        <li>Go to <code>chrome://restart</code>, then test if things are being unblocked by visiting <a href="https://coolmathgames.com">coolmathgames.com</a></li>
+    </ol>
+
+    <div class="note">Only needs to be set once per network.</div>
+
+    <hr>
+
+    <h3>Step 2: Pre-warm the Cache</h3>
+
+    <p>This step caches sites so they stay unblocked on school Wi-Fi, even when you're not on your home network or hotspot.</p>
+
+    <ol>
+        <li>Open the prewarm tool: <a class="btn" href="http://192.168.1.239/prewarm">Open Prewarm Tool</a></li>
+        <li>Look at the bottom and make sure it says <strong>Extension Verified</strong>, then pick how many websites you want (25k is a good amount) and click <strong>Start</strong></li>
+        <li>When it's done, switch to your school network</li>
+        <li>Go to <code>chrome://restart</code> to lock it in</li>
+    </ol>
+
+    <hr>
+
+    <h3>If this stopped working for you</h3>
+
+    <p>If LIDNS stops working, the cache may have expired or your network config got reset. Redo step 4 on your hotspot. Duration isn't guaranteed and won't always hit 10.5 hours.</p>
+
+    <p>If websites are no longer loading, go to <code>chrome://restart</code> to reset the DNS. If that doesn't fix it, try setting your DNS to Google's DNS (<code>8.8.8.8</code>) and do <code>chrome://restart</code> again to reset it.</p>
+
+    <hr>
+
+    <h3>FAQ</h3>
+
+    <h4>Why can't I set this up at school?</h4>
+    <p>School Wi-Fi hardcodes its own DNS server, so your custom one gets ignored. You have to set this up at home or on a hotspot.</p>
+
+    <h4>How long does it last?</h4>
+    <p>It varies. It won't consistently hit 10.5 hours. If it stops working, just redo step 4 on your hotspot.</p>
+
+    <h4>Why do I need to do chrome://restart twice?</h4>
+    <p>Both times it's to reload the DNS inside the extension. First one kicks it in after setting the DNS, second one does the same after prewarming.</p>
+
+    <h4>Why not use Omada DNS?</h4>
+    <p>LIDNS is better than Omada DNS for Lightspeed on two levels. First, it immediately unblocks sites on the Wi-Fi you set LIDNS up on. Second, it caches sites you want unblocked so they work on other school Wi-Fis where Omada DNS can't be used at all.</p>
+
+    <h4>Is this open source?</h4>
+    <p>Yes. You can check out the code at <a href="https://github.com/Sm0keSkreen/LIDNS">github.com/Sm0keSkreen/LIDNS</a> and host it yourself if you run into lag on the VPS or just don't trust it.</p>
+
+    <h4>Why do I need to change the DNS?</h4>
+    <p>Changing the DNS points your Chromebook to the LIDNS server. From there the Lightspeed extension is talking to LIDNS instead of the real Lightspeed servers, so it can be told to allow everything.</p>
+
+    <h4>Does this work on any Chromebook?</h4>
+    <p>Should work on most managed Chromebooks as long as you can change network settings. If your school has fully locked down network tabs you're out of luck.</p>
+
+    <h4>I can change the DNS on my school Wi-Fi, what can I do?</h4>
+    <p>If you can change the DNS at school you've got two options. You can set up Omada DNS on it to fully unblock everything, or you can still use LIDNS but skip step 4. Skipping the prewarm means it'll unblock every filtered site without caching anything. Also worth knowing: LIDNS blocks the extension from updating just like Omada DNS does, so if you don't want to powerwash or wait 10 days for it to reset, LIDNS might actually be the better pick.</p>
+
+    <h4>Why are some websites still blocked?</h4>
+    <p>Some sites off LIDNS are still blocked because they weren't covered in the prewarm script. If simple sites like coolmathgames.com are blocked it might be because the prewarm script failed, didn't run, or your extension isn't updating. If the prewarm script loaded, check the bottom of it and see if it says "extension updating."</p>
+    <p>Also, if some sites are blocked both on and off LIDNS it might be because your school is blocking them based on keywords like <code>pr0xy</code> and <code>unb|ocked</code>.</p>
+
+    <h4>Will I get in trouble?</h4>
+    <p>Depends, but it won't change anything in the Lightspeed management portal, so the only way they'll know is if they see you on unblocked sites.</p>
+
+    <h4>My question / issue wasn't solved in this FAQ, what do I do?</h4>
+    <p>Go to Titium Network (<a href="https://discord.gg/unblock">discord.gg/unblock</a>), head to the <strong>kajigs</strong> channel, search for LIDNS and send your question there. Or just DM me directly at <strong>sm0keskreen</strong> on Discord.</p>
+
+    <hr>
+
+    <div class="credits">
+        <div>Theorized, made and discovered by <span>Sm0keSkreen</span></div>
+        <div>Beta testers: <span>thehackkeeerrr (rooney)</span> &amp; <span>tidemaker621_96129 (magician)</span></div>
+    </div>
+
+</body>
+
+</html>
