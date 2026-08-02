@@ -192,7 +192,8 @@ check_dns
 echo ""
 
 # Start nginx
-nginx -g 'daemon off;' &
+/usr/sbin/nginx -g 'daemon off;' &
+NGINX_PID=$!
 
-# Keep container alive
-tail -f /dev/null
+# Keep container alive by waiting on nginx
+wait $NGINX_PID
