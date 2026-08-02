@@ -21,11 +21,9 @@ COPY ext.cnf /etc/ssl/lsrelay/ext.cnf
 # CA is generated at runtime per-host
 RUN mkdir -p /etc/ssl/lsrelay /etc/coredns
 
-# nginx setup - replace entire nginx config
-RUN rm -rf /etc/nginx/sites-enabled /etc/nginx/conf.d && \
-    mkdir -p /etc/nginx/conf.d
-
-COPY nginx-lsrelay.conf /etc/nginx/conf.d/default.conf
+# nginx setup - use custom main config
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx-lsrelay.conf /etc/nginx/conf.d/lidns.conf
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
