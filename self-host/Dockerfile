@@ -16,15 +16,16 @@ RUN tar -xzf /tmp/coredns.tgz -C /usr/local/bin/ && \
 # App files
 COPY fake-relay.py prewarm-api.py /opt/
 COPY lsrelay/ /var/www/lsrelay/
-COPY nginx-lsrelay.conf /etc/nginx/sites-available/lsrelay
 COPY ext.cnf /etc/ssl/lsrelay/ext.cnf
 
 # CA is generated at runtime per-host
 RUN mkdir -p /etc/ssl/lsrelay /etc/coredns
 
-# nginx setup
-RUN ln -sf /etc/nginx/sites-available/lsrelay /etc/nginx/sites-enabled/lsrelay && \
-    rm -f /etc/nginx/sites-enabled/default
+# nginx setup - replace entire nginx config
+RUN rm -rf /etc/nginx/sites-enabled /etc/nginx/conf.d && \
+    mkdir -p /etc/nginx/conf.d
+
+COPY nginx-lsrelay.conf /etc/nginx/conf.d/default.conf
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
