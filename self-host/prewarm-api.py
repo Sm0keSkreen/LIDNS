@@ -238,14 +238,8 @@ class Handler(BaseHTTPRequestHandler):
 class ThreadingHTTPServer(ThreadingMixIn, HTTPServer):
     daemon_threads = True
 
-def _preload():
-    logging.info('Preloading Tranco rank index...')
-    try:
-        get_tranco_rank('google.com')
-        logging.info('Rank index ready')
-    except Exception as e:
-        logging.warning('Preload failed: ' + str(e))
-
-threading.Thread(target=_preload, daemon=True).start()
+# Rank index (1M domains, ~100MB+ in memory) is built lazily on first
+# /domain-rank or /custom-blocked request instead of at boot, so idle
+# memory usage stays low on memory-constrained hosts.
 
 ThreadingHTTPServer(('127.0.0.1', 8446), Handler).serve_forever()
