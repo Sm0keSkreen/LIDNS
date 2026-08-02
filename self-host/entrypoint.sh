@@ -145,8 +145,13 @@ echo "CoreDNS configured."
 python3 /opt/fake-relay.py &
 python3 /opt/prewarm-api.py &
 
-# Start CoreDNS
+# Start CoreDNS (ignore if port 53 is already in use)
 coredns -conf /etc/coredns/Corefile &
+COREDNS_PID=$!
+sleep 1
+if ! kill -0 $COREDNS_PID 2>/dev/null; then
+    echo "[WARN] CoreDNS failed to start (port 53 may be in use). Continuing without DNS."
+fi
 
 echo ""
 echo "=== LIDNS Ready ==="
